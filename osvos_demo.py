@@ -25,7 +25,7 @@ os.chdir(root_folder)
 # User defined parameters
 seq_name = 'karting' 
 gpu_id = 0
-train_model = False
+train_model = True
 result_path = 'Results'
 # result_path = os.path.join('DAVIS', 'Results', 'Segmentations', '480p', 'OSVOS', seq_name)
 
@@ -39,8 +39,9 @@ max_training_iters = 500
 test_imgs = 'test.txt'
 # test_imgs = [os.path.join('DAVIS', 'JPEGImages', '480p', seq_name, frame) for frame in test_frames]
 if train_model:
-    train_imgs = [os.path.join('DAVIS', 'JPEGImages', '480p', seq_name, '00000.jpg')+' '+
-                  os.path.join('DAVIS', 'Annotations', '480p', seq_name, '00000.png')]
+    train_imgs = 'train.txt'
+#     train_imgs = [os.path.join('DAVIS', 'JPEGImages', '480p', seq_name, '00000.jpg')+' '+
+#                   os.path.join('DAVIS', 'Annotations', '480p', seq_name, '00000.png')]
     dataset = Dataset(train_imgs, test_imgs, './', data_aug=True)
 else:
     dataset = Dataset(None, test_imgs, './')
